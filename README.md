@@ -150,3 +150,28 @@ Généraliser `addOne` et `tostring` avec méthode `map`
 
 	//En Java
 	public List<A> join(List<A> others)
+
+##Partie 2 : Option
+###Créer la classe option
+Une option est un type qui contient 0 ou 1 valeur.
+
+* l'élément vide (type nommé None)
+* un élément non vide (type nommé Some)
+
+	//En Scala
+	trait Option[+A] {
+ 		def map[B](f: A => B): Option[B]
+ 		def flatMap[B](f: A => Option[B]): Option[B]
+ 		def getOrElse[B >: A](default: => B): B
+ 		def orElse[B >: A](ob: => Option[B]): Option[B]
+ 		def filter(f: A => Boolean): Option[A]
+	}
+
+	//En Java
+	public interface Option<A>{
+		Option[B] map<B>(Function<A,B> f) 
+ 		Option[B] flatMap<B>(Function<A,Option<B>> f)
+ 		A getOrElse(A default)
+ 		Option[A] orElse(Option[B]:ob)
+ 		Option[A] filter(Predicate<A> p)
+	}
