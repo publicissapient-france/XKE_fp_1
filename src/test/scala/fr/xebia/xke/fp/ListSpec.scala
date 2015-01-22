@@ -33,6 +33,9 @@ class ListSpec extends FunSpec with Matchers {
 		it("as a sum of 0"){
 			List.sum(Nil) should be(0)
 		}
+		it("as a sum of 1"){
+			List.product(Nil) should be(1)
+		}
 	}
 
 	 describe("A non-empty list"){
@@ -63,7 +66,10 @@ class ListSpec extends FunSpec with Matchers {
 			init should be( Cons(1, Cons(2,Nil)))
 		}
 		it("can sum a list of int"){
-			List.sum(Cons(1,Cons(2,Cons(3,Nil)))) should be(6)
+			List.sum(Cons(1, Cons(2, Cons(3, Nil)))) should be(6)
+		}
+		it("can prodct a list of int"){
+			List.product(Cons(2, Cons(3, Cons(4, Nil)))) should be(24)
 		}
 	 }
 }

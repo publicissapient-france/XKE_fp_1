@@ -18,6 +18,10 @@ object List{
 		case Cons(i,is) => i + sum(is)
 		case Nil => 0
 	}
+	def product(ints: List[Int]): Int = ints match{
+		case Cons(i,is) => i * product(is)
+		case Nil => 1
+	}
 }
 
 case class Cons[A](a: A, as:List[A]) extends List[A]{
