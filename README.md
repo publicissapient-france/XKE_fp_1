@@ -22,7 +22,15 @@ Vous pouvez coder en Java ou en Scala. Il n'y a pas de librarie nécessaire.
 Une des structures élémentaires de la programmation fonctionnelle est la liste simplement chaînée.
 La liste est formée d'élément qui sont liés à leur successeur. Un élément d'une liste est soit:
 * l'élément vide (type nommé Nil)
-* un élément non vide (head de type Cons) + la liste des éléments restants (tail)
+* un élément non vide (head de type A) + la liste des éléments restants (tail)
+
+Donc, l'interface `List[A]` doit être implémentée par deux classes:
+
+	class Cons[A](...) extends List[A]
+
+	et 
+
+	class Nil .. extends List...
 
 Votre liste doit être polymorphique (avec un type générique). On attend donc une signature de type:
 
@@ -175,3 +183,9 @@ Une option est un type qui contient 0 ou 1 valeur.
  		Option[A] orElse(Option[B]:ob)
  		Option[A] filter(Predicate<A> p)
 	}
+
+##Partie 3 : Refactoring
+
+On continue notre session de refactoring, `map` se répête entre `List` et `Option`.
+La propriété d'un type d'avoir `map` fait basiquement de lui un foncteur.
+
