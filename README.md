@@ -61,8 +61,6 @@ Implémenter la fonction `sum` qui a la signature suivante:
 	//En Java
 	public static Integer sum(List<Integer> ints)
 
-
-
 ###Exercice 6
 Implémenter la fonction `product` qui a la signature suivante:
 
