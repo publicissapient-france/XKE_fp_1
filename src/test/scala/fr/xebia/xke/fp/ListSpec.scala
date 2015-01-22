@@ -11,11 +11,11 @@ class ListSpec extends FunSpec with Matchers {
 		}
 
 		it("can have one element"){
-			new Cons(1,Nil)
+			 Cons(1,Nil)
 		}
 
 		it("can have more than 1 element"){
-			new Cons(1,new Cons(2,Nil))
+			 Cons(1, Cons(2,Nil))
 		}
 	}
 
@@ -30,34 +30,40 @@ class ListSpec extends FunSpec with Matchers {
 		it("has no init"){
 			Nil.init should be(Nil)
 		}
+		it("as a sum of 0"){
+			List.sum(Nil) should be(0)
+		}
 	}
 
 	 describe("A non-empty list"){
 	 	it("has a tail which is the list minus the first element"){
-	 		val list = new Cons(1,new Cons(2,Nil))
+	 		val list = Cons(1, Cons(2,Nil))
 	 		val listTail = list.tail
 
-	 		listTail should be(new Cons(2,Nil))
+	 		listTail should be( Cons(2,Nil))
 	 	}
 
 	 	it("returns a sublist by dropping elements from the left"){
-	 		val list = new Cons(1,new Cons(2,new Cons(3,Nil)))
+	 		val list = Cons(1, Cons(2, Cons(3,Nil)))
 	 		val sublist = list.drop(2)
 
-	 		sublist should be(new Cons(3,Nil))
+	 		sublist should be( Cons(3,Nil))
 	 	}
 
 	 	it("returns Nil when dropping more elements than its length"){
-	 		val list = new Cons(1,Nil)
+	 		val list = Cons(1,Nil)
 	 		val sublist = list.drop(3)
 
 	 		sublist should be(Nil)
 	 	}
 	 	it("init is the same list without the last one"){
-			val list = new Cons(1,new Cons(2,new Cons(3,Nil)))
+			val list = Cons(1, Cons(2, Cons(3,Nil)))
 			val init = list.init
 
-			init should be(new Cons(1,new Cons(2,Nil)))
+			init should be( Cons(1, Cons(2,Nil)))
+		}
+		it("can sum a list of int"){
+			List.sum(Cons(1,Cons(2,Cons(3,Nil)))) should be(6)
 		}
 	 }
 }

@@ -13,6 +13,13 @@ sealed trait List[+A]{
 	}
 }
 
+object List{
+	def sum(ints: List[Int]): Int = ints match{
+		case Cons(i,is) => i + sum(is)
+		case Nil => 0
+	}
+}
+
 case class Cons[A](a: A, as:List[A]) extends List[A]{
 	def drop(n:Int) = if (n < 1) {
 		this
