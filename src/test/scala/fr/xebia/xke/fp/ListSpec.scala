@@ -36,6 +36,9 @@ class ListSpec extends FunSpec with Matchers {
 		it("as a sum of 1"){
 			List.product(Nil) should be(1)
 		}
+		it("has a length of 0"){
+			Nil.length should be(0)
+		}
 	}
 
 	 describe("A non-empty list"){
@@ -70,6 +73,9 @@ class ListSpec extends FunSpec with Matchers {
 		}
 		it("can prodct a list of int"){
 			List.product(Cons(2, Cons(3, Cons(4, Nil)))) should be(24)
+		}
+		it("has a length"){
+			Cons(2,Cons(3,Nil)).length should be(2)
 		}
 	 }
 }

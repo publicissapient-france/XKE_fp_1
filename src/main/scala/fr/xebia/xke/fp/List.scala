@@ -11,17 +11,21 @@ sealed trait List[+A]{
 		case Cons(a,b)   => Cons(a,b.init)
 		case Nil => this
 	}
+
+	def foldRight[B](z: B)(f: (A, B) => B): B = this match{
+		case Nil => z
+		case Cons(x,xs) => f(x,xs.foldRight(z)(f))
+	}
+
+	def length: Int = foldRight(0)((a,b) => b + 1)
 }
 
 object List{
-	def sum(ints: List[Int]): Int = ints match{
-		case Cons(i,is) => i + sum(is)
-		case Nil => 0
-	}
-	def product(ints: List[Int]): Int = ints match{
-		case Cons(i,is) => i * product(is)
-		case Nil => 1
-	}
+	def sum(ints: List[Int]): Int = 
+		ints.foldRight(0)((i,j) => i + j)
+
+	def product(ints: List[Int]): Int = 
+		ints.foldRight(1)((i,j) => i * j)
 }
 
 case class Cons[A](a: A, as:List[A]) extends List[A]{
