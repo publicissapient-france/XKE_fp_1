@@ -2,14 +2,27 @@ package fr.xebia.xke.fp
 
 
 sealed trait List[+A]{
-	def tail:List[A] = drop(1)
-
-	def drop(n: Int): List[A]
+	
+	def drop(n: Int): List[A] = this match{
+		case Nil => 
+			Nil
+		
+		case Cons(x, xs) => 
+			if (n < 1) {
+				this
+			} else 
+				xs.drop(n-1)
+	}
 
 	def init: List[A] = this match{
 		case Cons(a,Nil) => Nil
 		case Cons(a,b)   => Cons(a,b.init)
 		case Nil => this
+	}
+
+	def map[B](f: (A => B)): List[B] = this match{
+		case Cons(x,xs) => Cons(f(x) , xs.map(f))
+		case Nil => Nil
 	}
 
 	def foldRight[B](z: B)(f: (A, B) => B): B = this match{
@@ -23,7 +36,10 @@ sealed trait List[+A]{
 		case Cons(x,xs) => xs.foldLeft(f(z,x))(f)
 	}
 
-	def length: Int = foldRight(0)((a,b) => b + 1)
+	def length: Int = 
+		foldRight(0)((a,b) => b + 1)
+
+	def tail:List[A] = drop(1)		
 }
 
 object List{
@@ -33,23 +49,15 @@ object List{
 	def product(ints: List[Int]): Int = 
 		ints.foldLeft(1)((i,j) => i * j)
 
-	def addOne(list: List[Int]): List[Int] = list match{
-		case Cons(x,xs) => Cons(x+1,addOne(xs))
-		case Nil => Nil
-	}
-	def tostring(list: List[_]): List[String] = list match{
-		case Cons(x,xs) => Cons(x.toString,tostring(xs))
-		case Nil => Nil
-	}
+	def addOne(list: List[Int]): List[Int] = 
+		list.map(i => i + 1)
+
+	def tostring(list: List[_]): List[String] = 
+		list.map(x => x.toString)
+	
 
 }
 
-case class Cons[A](a: A, as:List[A]) extends List[A]{
-	def drop(n:Int) = if (n < 1) {
-		this
-	} else as.drop(n-1)
-}
+case class Cons[A](a: A, as:List[A]) extends List[A]
 
-case object Nil extends List[Nothing]{
-	def drop(n:Int) = this
-}
+case object Nil extends List[Nothing]
