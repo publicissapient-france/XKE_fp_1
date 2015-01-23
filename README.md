@@ -140,6 +140,15 @@ Généraliser `addOne` et `tostring` avec méthode `map`
 	public List<A> (Predicate<A> p)
 
 ###Exercice 15
+Écrire une fonction qui prend deux listes et les concatene
+
+	//En Scala
+	def append[A](list1:List[A],list2:List[A]):List[A]
+
+	//En Java
+	public static List<A> join(List<A> list1,List<A> list2)
+
+###Exercice 16
 Écrire une méthode `flatMap` qui fonctionne comme `map` mais concatene les résultats.
 
 	//En Scala
@@ -147,15 +156,6 @@ Généraliser `addOne` et `tostring` avec méthode `map`
 
 	//En Java
 	public <B> List<B> flatMap(f: Function<A,B>)
-
-###Exercice 16
-Écrire une fonction qui prend deux listes et les concatenenes en utilisant `flatMap`
-
-	//En Scala
-	def join(others: List[A]):List[A]
-
-	//En Java
-	public List<A> join(List<A> others)
 
 ##Partie 2 : Option
 ###Créer la classe option

@@ -61,6 +61,10 @@ object List{
 	def tostring(list: List[_]): List[String] = 
 		list.map(x => x.toString)
 	
+	def append[A](list1:List[A],list2:List[A]):List[A] = list1 match{
+		case Nil => list2
+		case Cons(x,xs) => Cons(x,append(xs,list2))
+	}
 
 }
 

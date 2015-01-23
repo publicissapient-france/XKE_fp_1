@@ -92,5 +92,13 @@ class ListSpec extends FunSpec with Matchers {
 
 			evens should be(Cons(2,Nil))
 		}	
+		it("can appended to another list"){
+			val list1 = Cons(1,Cons(2,Nil))
+			val list2 = Cons(3,Nil)
+
+			val result = List.append(list1,list2)
+
+			result should be(Cons(1,Cons(2,Cons(3,Nil))))
+		}
 	 }
 }
