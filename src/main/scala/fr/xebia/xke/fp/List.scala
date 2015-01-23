@@ -17,6 +17,12 @@ sealed trait List[+A]{
 		case Cons(x,xs) => f(x,xs.foldRight(z)(f))
 	}
 
+ 	@annotation.tailrec
+	final def foldLeft[B](z: B)(f: (B, A) => B): B = this match{
+		case Nil => z
+		case Cons(x,xs) => xs.foldLeft(f(z,x))(f)
+	}
+
 	def length: Int = foldRight(0)((a,b) => b + 1)
 }
 
