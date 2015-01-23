@@ -134,7 +134,7 @@ Généraliser `addOne` et `tostring` avec méthode `map`
 Écrire une méthode `filter` qui permet de filter le contenu d'une liste
 
 	//En Scala
-	def map(p: (A=>Boolean)):List[A]
+	def filter(p: (A=>Boolean)):List[A]
 
 	//En Java
 	public List<A> (Predicate<A> p)

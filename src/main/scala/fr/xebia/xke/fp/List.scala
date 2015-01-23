@@ -36,6 +36,12 @@ sealed trait List[+A]{
 		case Cons(x,xs) => xs.foldLeft(f(z,x))(f)
 	}
 
+	def filter(p : (A => Boolean)): List[A] = this match{
+		case Nil => Nil
+		case Cons(x,xs) if p(x) => Cons(x,xs.filter(p))
+		case Cons(_,xs) => xs.filter(p)
+	}
+
 	def length: Int = 
 		foldRight(0)((a,b) => b + 1)
 

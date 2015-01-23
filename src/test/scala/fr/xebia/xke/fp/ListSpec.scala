@@ -87,5 +87,10 @@ class ListSpec extends FunSpec with Matchers {
 
 			result should be(Cons("1",Cons("2",Nil)))
 		}
+		it("can be filtered"){
+			val evens = Cons(1,Cons(2,Cons(3,Nil))).filter(p => p % 2 == 0)
+
+			evens should be(Cons(2,Nil))
+		}	
 	 }
 }
