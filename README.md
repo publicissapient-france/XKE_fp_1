@@ -101,7 +101,7 @@ Cela évite d'exploser la pile d'appel pour des listes de grande taille.
 	public <B> B foldLeft(B z, BiFunction<B,A,B> f)	
 
 ###Exercice 10
-Réimplementer `sum`, `product` et `length` avec `foldLeft`.
+Réfactorer `sum`, `product` et `length` avec `foldLeft`.
 
 ###Exercice 11
 Implémenter une fonction qui prend en entrée une liste d'entiers et retourne une nouvelle liste avec chaque entrée incrémentée de 1

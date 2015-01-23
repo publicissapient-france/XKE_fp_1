@@ -28,10 +28,15 @@ sealed trait List[+A]{
 
 object List{
 	def sum(ints: List[Int]): Int = 
-		ints.foldRight(0)((i,j) => i + j)
+		ints.foldLeft(0)((i,j) => i + j)
 
 	def product(ints: List[Int]): Int = 
-		ints.foldRight(1)((i,j) => i * j)
+		ints.foldLeft(1)((i,j) => i * j)
+
+	def addOne(list: List[Int]): List[Int] = list match{
+		case Cons(x,xs) => Cons(x+1,addOne(xs))
+		case Nil => Nil
+	}
 }
 
 case class Cons[A](a: A, as:List[A]) extends List[A]{

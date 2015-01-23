@@ -71,11 +71,16 @@ class ListSpec extends FunSpec with Matchers {
 		it("can sum a list of int"){
 			List.sum(Cons(1, Cons(2, Cons(3, Nil)))) should be(6)
 		}
-		it("can prodct a list of int"){
+		it("can product a list of int"){
 			List.product(Cons(2, Cons(3, Cons(4, Nil)))) should be(24)
 		}
 		it("has a length"){
 			Cons(2,Cons(3,Nil)).length should be(2)
+		}
+		it("add one to a list of ints"){
+			val result = List.addOne(Cons(2,Cons(3,Nil)))
+
+			result should be(Cons(3,Cons(4,Nil)))
 		}
 	 }
 }
