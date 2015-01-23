@@ -82,5 +82,10 @@ class ListSpec extends FunSpec with Matchers {
 
 			result should be(Cons(3,Cons(4,Nil)))
 		}
+		it("can render elements as strings"){
+			val result = List.tostring(Cons(1,Cons(2,Nil)))
+
+			result should be(Cons("1",Cons("2",Nil)))
+		}
 	 }
 }

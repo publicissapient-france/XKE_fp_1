@@ -116,7 +116,7 @@ Implémenter une fonction qui prend en entrée une liste d'entiers et retourne u
 Implémenter une fonction qui prend en entrée une liste d'entiers et retourne une nouvelle liste avec sa représentation en String
 
 	//En Scala
-	def tostring(list: List[Int]): List[Int]
+	def tostring(list: List[_]): List[String]
 
 	//En Java
 	public static List<Integer> tostring (List<Integer> list)

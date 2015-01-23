@@ -37,6 +37,11 @@ object List{
 		case Cons(x,xs) => Cons(x+1,addOne(xs))
 		case Nil => Nil
 	}
+	def tostring(list: List[_]): List[String] = list match{
+		case Cons(x,xs) => Cons(x.toString,tostring(xs))
+		case Nil => Nil
+	}
+
 }
 
 case class Cons[A](a: A, as:List[A]) extends List[A]{
