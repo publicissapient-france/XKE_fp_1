@@ -45,7 +45,13 @@ sealed trait List[+A]{
 	def length: Int = 
 		foldRight(0)((a,b) => b + 1)
 
-	def tail:List[A] = drop(1)		
+	def tail:List[A] = drop(1)	
+
+	def flatMap[B](f: (A => List[B])): List[B] = this match{
+		case Nil => Nil
+		case Cons(x,xs) => List.append(f(x),xs.flatMap(f))
+	}
+	
 }
 
 object List{

@@ -100,5 +100,12 @@ class ListSpec extends FunSpec with Matchers {
 
 			result should be(Cons(1,Cons(2,Cons(3,Nil))))
 		}
+		it("can be flatMapped"){
+			val list = Cons(1,Cons(2,Nil))
+
+			val result = list.flatMap(x => Cons(0,Cons(x,Nil)))
+
+			result should be(Cons(0,Cons(1,Cons(0,Cons(2,Nil)))))
+		}
 	 }
 }
