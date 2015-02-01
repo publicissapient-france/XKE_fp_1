@@ -140,7 +140,7 @@ Généraliser `addOne` et `tostring` avec une méthode `map`.
 	def filter(p: (A=>Boolean)):List[A]
 
 	// En Java
-	public List<A> (Predicate<A> p)
+	public List<A> filter(Predicate<A> p)
 
 ###Exercice 15
 Écrire une fonction qui prend deux listes et les concatène.
@@ -149,7 +149,7 @@ Généraliser `addOne` et `tostring` avec une méthode `map`.
 	def append[A](list1:List[A],list2:List[A]):List[A]
 
 	// En Java
-	public static List<A> join(List<A> list1,List<A> list2)
+	public static <A> List<A> join(List<A> list1,List<A> list2)
 
 ###Exercice 16
 Écrire une méthode `flatMap` qui fonctionne comme `map` mais concatène les résultats.
@@ -158,7 +158,7 @@ Généraliser `addOne` et `tostring` avec une méthode `map`.
 	def flatMap[B](f: (A => List[B])): List[B]
 
 	// En Java
-	public <B> List<B> flatMap(f: Function<A,B>)
+	public <B> List<B> flatMap(Function<A, List<B>> f)
 
 ##Partie 2 : Option
 ###Créer la classe option
@@ -180,11 +180,11 @@ Ce qui donne:
 
 	// En Java
 	public interface Option<A>{
-		Option[B] map<B>(Function<A,B> f) 
- 		Option[B] flatMap<B>(Function<A,Option<B>> f)
+		<B> Option<B> map<B>(Function<A,B> f) 
+ 		<B> Option<B> flatMap<B>(Function<A, Option<B>> f)
  		A getOrElse(A default)
- 		Option[A] orElse(Option[B]:ob)
- 		Option[A] filter(Predicate<A> p)
+ 		Option<A> orElse(Option<A> alternative)
+ 		Option<A> filter(Predicate<A> p)
 	}
 
 ##Partie 3 : Refactoring
